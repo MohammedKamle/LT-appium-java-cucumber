@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="BDD Test Suite" verbose="1" parallel="tests"
-       thread-count="2">
+<suite name="BDD Test Suite" verbose="1" parallel="methods" data-provider-thread-count="2">
     <test name="Galaxy" annotations="JDK"
-          preserve-order="true">
-        <parameter name="deviceName" value="Galaxy.*"/>
+          preserve-order="true" >
+        <parameter name="deviceName" value="Pixel.*"/>
         <parameter name="platformVersion" value="11"/>
         <parameter name="platformName" value="Android"/>
         <classes>
             <class name="MyRunner.TestRunner"/>
         </classes>
-    </test> <!-- Test -->
-    <test name="OnePlus" annotations="JDK"
-          preserve-order="true">
-        <parameter name="deviceName" value="Pixel.*"/>
-        <parameter name="platformVersion" value="12"/>
-        <parameter name="platformName" value="Android"/>
-        <classes>
-            <class name="MyRunner.TestRunner"/>
-        </classes>
-    </test> <!-- Test -->
+    </test>
 
 </suite>

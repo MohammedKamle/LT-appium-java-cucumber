@@ -43,6 +43,11 @@ public class ToDoStepDefinition extends TestRunner {
         System.out.println("On Home page");
     }
 
+    @Given("^user is on the App home page1$")
+    public void user_already_on_home_page1() {
+        System.out.println("On Home page1");
+    }
+
     @When("^click on color element$")
     public void click_color() {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("color"))).click();

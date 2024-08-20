@@ -1,19 +1,18 @@
 package MyRunner;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.TestNGCucumberRunner;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 
-@CucumberOptions(features = "src/main/java/Features/todo.feature", glue = {
+@CucumberOptions(features = "src/main/java/Features/", glue = {
         "stepDefinitions"}, plugin = "json:target/cucumber-reports/CucumberTestReport.json")
 
 public class TestRunner extends AbstractTestNGCucumberTests {
@@ -55,10 +54,14 @@ public class TestRunner extends AbstractTestNGCucumberTests {
         connection = new RemoteWebDriver(new URL(gridURL), capability);
     }
 
-    @DataProvider
-    public Object[][] features() {
-        return testNGCucumberRunner.provideScenarios();
+
+    @Override
+    @DataProvider(parallel = true)
+    public Object[][] scenarios() {
+        return super.scenarios();
     }
+
+
 
     @AfterClass(alwaysRun = true)
     public void tearDownClass() {
